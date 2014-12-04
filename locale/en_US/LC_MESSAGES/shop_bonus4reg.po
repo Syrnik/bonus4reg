@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: shop/plugins/bonus4reg\n"
+"POT-Creation-Date: 2014-12-04 04:26+0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator:  shop/plugins/bonus4reg\n"
+"Language-Team:  shop/plugins/bonus4reg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: en_US\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/settings/Settings.html:3
+msgid "Signup Bonus plugin is installed."
+msgstr ""
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/settings/Settings.html:6
+msgid "Customize Signup Bonus settings in <a href=\"%s\">Signup Bonus settings</a> screen."
+msgstr ""
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:1
+#: /wa-apps/shop/plugins/bonus4reg/lib/shopBonus4regPlugin.class.php:17
+#: /wa-apps/shop/plugins/bonus4reg/lib/config/plugin.php:10
+msgid "Signup Bonus"
+msgstr ""
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:3
+msgid "Encourage your customers to register on your site"
+msgstr ""
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:6
+msgid "This is the addition to the <b>main Loyalty Program</b>. Please turn on Loyalty Program before setting up this extension."
+msgstr ""
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:14
+#: /wa-apps/shop/plugins/bonus4reg/lib/shopBonus4regPlugin.class.php:30
+msgid "Signup bonus"
+msgstr ""
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:17
+msgid "Disabled"
+msgstr ""
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:21
+msgid "Enabled"
+msgstr ""
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:29
+msgid "Number of points"
+msgstr ""
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:32
+msgid "Number of points that will be credited for signup."
+msgstr ""
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:40
+msgid "Save"
+msgstr ""

@@ -1,0 +1,75 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: shop/plugins/bonus4reg\n"
+"POT-Creation-Date: 2014-12-04 04:26+0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Serge Rodovnichenko <sergerod@gmail.com>\n"
+"Language-Team: shop/plugins/bonus4reg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((((n%10)==1)&&((n%100)!=11))?(0):(((((n"
+"%10)>=2)&&((n%10)<=4))&&(((n%100)<10)||((n%100)>=20)))?(1):2));\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/settings/Settings.html:3
+msgid "Signup Bonus plugin is installed."
+msgstr "Плагин Бонус за Регистрацию установлен."
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/settings/Settings.html:6
+msgid ""
+"Customize Signup Bonus settings in <a href=\"%s\">Signup Bonus settings</a> "
+"screen."
+msgstr ""
+"Управление плагином находится в разделе <a href=\"%s\">Настройки Бонуса за "
+"Регистрацию</a>."
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:1
+#: /wa-apps/shop/plugins/bonus4reg/lib/shopBonus4regPlugin.class.php:17
+#: /wa-apps/shop/plugins/bonus4reg/lib/config/plugin.php:10
+msgid "Signup Bonus"
+msgstr "Бонус за Регистрацию"
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:3
+msgid "Encourage your customers to register on your site"
+msgstr ""
+"Стимулируйте посетителей становиться зарегистрированными пользователями"
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:6
+msgid ""
+"This is the addition to the <b>main Loyalty Program</b>. Please turn on "
+"Loyalty Program before setting up this extension."
+msgstr ""
+"Это расширение <b>для Бонусной Программы</b>. Пожалуйста активируйте "
+"Бонусную Программу перед тем, как настривать этот плагин."
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:14
+#: /wa-apps/shop/plugins/bonus4reg/lib/shopBonus4regPlugin.class.php:30
+msgid "Signup bonus"
+msgstr "Бонус за регистрацию"
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:17
+msgid "Disabled"
+msgstr "Выключен"
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:21
+msgid "Enabled"
+msgstr "Включен"
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:29
+msgid "Number of points"
+msgstr "Количество баллов"
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:32
+msgid "Number of points that will be credited for signup."
+msgstr ""
+"Количество баллов, которое будет зачислено на счет посетителя после "
+"регистрации"
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:40
+msgid "Save"
+msgstr "Сохранить"
