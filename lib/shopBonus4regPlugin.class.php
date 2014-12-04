@@ -18,16 +18,28 @@ class shopBonus4regPlugin extends shopPlugin
             'url' => '?plugin=bonus4reg&module=affiliate&action=settings'
         );
     }
-    
+
     /**
-     * 
+     * Бонусный счет есть только у покупателей магазина.
+     * Поэтому перед начислением создаем нового покупателя из
+     * контакта
+     *
      * @param waContact $contact
      */
     public function signupHandler($contact)
     {
         if(shopAffiliate::isEnabled() && $this->getSettings('enabled') && ($contact instanceof waContact) && $contact->getId()) {
             $AffiliateTransaction = new shopAffiliateTransactionModel();
-            $AffiliateTransaction->applyBonus($contact->getId(), $this->getSettings('rate'), NULL, _wp('Signup bonus'));
+            $ShopCustomer = new shopCustomerModel();
+
+            $ShopCustomer->createFromContact($contact->getId());
+
+            $AffiliateTransaction->applyBonus(
+                    $contact->getId(),
+                    $this->getSettings('rate'),
+                    NULL,
+                    _wp('Signup bonus'),
+                    shopAffiliateTransactionModel::TYPE_DEPOSIT);
         }
     }
 
