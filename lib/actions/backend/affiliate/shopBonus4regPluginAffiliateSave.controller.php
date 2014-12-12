@@ -12,6 +12,9 @@ class shopBonus4regPluginAffiliateSaveController extends waJsonController
 {
     public function execute()
     {
+        if (!$this->getUser()->getRights('shop', 'settings')) {
+            throw new waRightsException(_w('Access denied'));
+        }
         waSystem::getInstance('shop')->getPlugin('bonus4reg')->saveSettings(waRequest::post());
     }
 }

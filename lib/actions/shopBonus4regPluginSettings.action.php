@@ -12,6 +12,9 @@ class shopBonus4regPluginSettingsAction extends waViewAction
 {
     public function execute()
     {
+        if (!$this->getUser()->getRights('shop', 'settings')) {
+            throw new waRightsException(_w('Access denied'));
+        }
         $plugin = waSystem::getInstance('shop')->getPlugin('bonus4reg');
     }
 }

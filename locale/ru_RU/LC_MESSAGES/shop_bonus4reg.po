@@ -73,3 +73,22 @@ msgstr ""
 #: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:40
 msgid "Save"
 msgstr "Сохранить"
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:4
+msgid ""
+"This plugin allows you to accrue a buyer the specified number of points for "
+"the registration on your site."
+msgstr ""
+"Плагин позволяет начислять покупателю бонусные баллы за регистрацию на сайте"
+
+#: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:5
+msgid ""
+"<b>Attention!</b> The plugin works only when the \"Shop\" is selected as an "
+"application that is responsible for user registration and authorization! "
+"Check the configuration of URLs for user signup, authorization and personal "
+"accounts in the settings of the \"Site\" application."
+msgstr ""
+"<b>Внимание!</b> Плагин работает только в том случае, когда приложением, "
+"отвечающим за регистрацию и авторизацию пользователя установлен \"Магазин\". "
+"Проверьте конфигурацию URL для регистрации, авторизации и личного кабинета в "
+"настройках приложения \"Сайт\"."

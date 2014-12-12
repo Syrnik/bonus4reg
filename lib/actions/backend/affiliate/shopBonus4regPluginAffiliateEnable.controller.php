@@ -12,6 +12,9 @@ class shopBonus4regPluginAffiliateEnableController extends waJsonController
 {
     public function execute()
     {
+        if (!$this->getUser()->getRights('shop', 'settings')) {
+            throw new waRightsException(_w('Access denied'));
+        }
         $status = waRequest::post('enable', 0, waRequest::TYPE_INT);
         waSystem::getInstance('shop')->getPlugin('bonus4reg')->setStatus($status);
     }

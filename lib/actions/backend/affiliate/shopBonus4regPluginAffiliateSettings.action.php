@@ -1,7 +1,7 @@
 <?php
 /**
  * View Affiliate Settings form action
- * 
+ *
  * @package Bonus4reg/controller
  * @author Serge Rodovnichenko <serge@syrnik.com>
  * @version 1.0.0
@@ -12,10 +12,14 @@ class shopBonus4regPluginAffiliateSettingsAction extends waViewAction
 {
     public function execute()
     {
+        if (!$this->getUser()->getRights('shop', 'settings')) {
+            throw new waRightsException(_w('Access denied'));
+        }
+
         $shop_affiliate_enabled = shopAffiliate::isEnabled();
         $settings = waSystem::getInstance('shop')->getPlugin('bonus4reg')->getSettings();
         $enabled = ifset($settings['enabled']);
-        
+
         $this->view->assign(compact('enabled', 'settings', 'shop_affiliate_enabled'));
     }
 }
