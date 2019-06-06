@@ -6,7 +6,7 @@
  * @license http://www.webasyst.com/terms/#eula Webasyst
  */
 return array(
-    'name'          => _wp('Signup Bonus'),
+    'name'          => /*_wp*/'Signup Bonus',
     'img'           => 'img/icon.png',
     'version'       => '1.1.0',
     'vendor'        => '670917',
