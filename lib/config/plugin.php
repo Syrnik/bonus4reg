@@ -14,11 +14,11 @@ return array(
     'handlers'      =>
         array(
             'backend_settings_affiliate' => 'backendSettingsAffiliate',
-            '*'                          => array(
+            '*'                          => array(array(
                 'event_app_id' => '*',
                 'event'        => 'signup',
                 'class'        => 'shopBonus4regPlugin',
                 'method'       => 'signupHandler'
-            )
+            ))
         ),
 );
