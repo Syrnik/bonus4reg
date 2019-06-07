@@ -9,12 +9,13 @@ $plugin_dir = wa('shop')->getConfig()->getPluginPath('bonus4reg');
 $files = array(
     '/README.md',
     '/README_en.md',
+    '/templates/settings'
 );
 
 foreach ($files as $file) {
     try {
         waFiles::delete($plugin_dir . $file);
     } catch (Exception $e) {
-        waLog::log('Bonus for signup plugin update (' . __FILE__ . "): Error deleting old vendor file $file: " . $e->getMessage());
+        waLog::log('Bonus for signup plugin update (' . __FILE__ . "): Error deleting old file $file: " . $e->getMessage());
     }
 }
