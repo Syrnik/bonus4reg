@@ -6,10 +6,10 @@
  */
 $plugin_dir = wa('shop')->getConfig()->getPluginPath('bonus4reg');
 
-$files = [
+$files = array(
     '/README.md',
     '/README_en.md',
-];
+);
 
 foreach ($files as $file) {
     try {
