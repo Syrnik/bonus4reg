@@ -8,7 +8,7 @@
 return array(
     'name'          => /*_wp*/'Signup Bonus',
     'img'           => 'img/icon.png',
-    'version'       => '1.1.0',
+    'version'       => '2.0.0',
     'vendor'        => '670917',
     'shop_settings' => true,
     'handlers'      =>
