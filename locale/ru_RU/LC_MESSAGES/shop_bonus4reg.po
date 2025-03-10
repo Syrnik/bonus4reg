@@ -21,12 +21,8 @@ msgid "Signup Bonus plugin is installed."
 msgstr "Плагин Бонус за Регистрацию установлен."
 
 #: /wa-apps/shop/plugins/bonus4reg/templates/actions/settings/Settings.html:6
-msgid ""
-"Customize Signup Bonus settings in <a href=\"%s\">Signup Bonus settings</a> "
-"screen."
-msgstr ""
-"Управление плагином находится в разделе <a href=\"%s\">Настройки Бонуса за "
-"Регистрацию</a>."
+msgid "Customize Signup Bonus settings in <a href=\"%s\">Signup Bonus</a> screen of Marketing/Affliliate section."
+msgstr "Управление плагином находится в разделе <a href=\"%s\">Бонус за Регистрацию</a> на экране Маркетинг/Партнёрская программа."
 
 #: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:1
 #: /wa-apps/shop/plugins/bonus4reg/lib/shopBonus4regPlugin.class.php:17

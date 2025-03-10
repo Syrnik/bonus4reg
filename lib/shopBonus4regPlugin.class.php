@@ -4,18 +4,22 @@
  *
  * @package Bonus4reg
  * @author Serge Rodovnichenko <serge@syrnik.com>
- * @version 1.0.0
- * @copyright (c) 2014, Serge Rodovnichenko
+ * @copyright (c) 2014-2025, Serge Rodovnichenko
  * @license http://www.webasyst.com/terms/#eula Webasyst
  */
+
 class shopBonus4regPlugin extends shopPlugin
 {
-    public function backendSettingsAffiliate()
+    /**
+     * @return array
+     * @throws waException
+     */
+    public function backendSettingsAffiliate(): array
     {
         return array(
-            'id' => 'bonus4reg',
+            'id'   => 'bonus4reg',
             'name' => _wp('Signup Bonus'),
-            'url' => '?plugin=bonus4reg&module=affiliate&action=settings'
+            'url'  => '?plugin=bonus4reg&module=affiliate&action=settings'
         );
     }
 
@@ -24,31 +28,32 @@ class shopBonus4regPlugin extends shopPlugin
      * Поэтому перед начислением создаем нового покупателя из
      * контакта
      *
-     * @param waContact $contact
+     * @param waContact|mixed $contact
+     * @throws waException
      */
-    public function signupHandler($contact)
+    public function signupHandler($contact): void
     {
-        if(shopAffiliate::isEnabled() && $this->getSettings('enabled') && ($contact instanceof waContact) && $contact->getId()) {
+        if (shopAffiliate::isEnabled() && $this->getSettings('enabled') && ($contact instanceof waContact) && $contact->getId()) {
             $AffiliateTransaction = new shopAffiliateTransactionModel();
             $ShopCustomer = new shopCustomerModel();
 
             $ShopCustomer->createFromContact($contact->getId());
 
             $AffiliateTransaction->applyBonus(
-                    $contact->getId(),
-                    $this->getSettings('rate'),
-                    NULL,
-                    _wp('Signup bonus'),
-                    shopAffiliateTransactionModel::TYPE_DEPOSIT);
+                $contact->getId(),
+                $this->getSettings('rate'),
+                NULL,
+                _wp('Signup bonus'),
+                shopAffiliateTransactionModel::TYPE_DEPOSIT);
         }
     }
 
     /**
      * Turns plugin on or off
      *
-     * @param int $status 0 - disabled, 1 - enabled
+     * @param int|string $status 0 - disabled, 1 - enabled
      */
-    public function setStatus($status)
+    public function setStatus($status): void
     {
         $this->getSettingsModel()->set($this->getSettingsKey(), 'enabled', $status);
     }

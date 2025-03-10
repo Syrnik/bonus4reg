@@ -4,24 +4,22 @@
 <p>[`This plugin allows you to accrue a buyer the specified number of points for the registration on your site.`]</p>
 <p>[`<b>Attention!</b> The plugin works only when the "Shop" is selected as an application that is responsible for user registration and authorization! Check the configuration of URLs for user signup, authorization and personal accounts in the settings of the "Site" application.`]</p>
 
-<div style="{if $shop_affiliate_enabled}display:none;{/if}border:1px dashed #c7254e;border-radius:3px;padding:1em;text-align:center;color:#c7254e;background-color: #f9f2f4">
+<div style="{if $shop_affiliate_enabled}display:none;{/if}" class="warning alert">
     [`This is the addition to the <b>main Loyalty Program</b>. Please turn on Loyalty Program before setting up this extension.`]
-</div>       
-
-<form id="s-settings-affiliate-bonus4reg-form"  action="?plugin=bonus4reg&module=affiliate&action=save">
-    <div class="fields form">
-        
+</div>
+<form id="s-settings-affiliate-bonus4reg-form"  action="{$wa_app_url}?plugin=bonus4reg&module=affiliate&action=save">
+    <div class="fields">
         <div class="field-group"{if !$shop_affiliate_enabled} style="display:none"{/if}>
             <div class="field">
-                <div class="name">[`Signup bonus`]</div>
-                <div class="value no-shift s-ibutton-checkbox">
-                    <ul class="menu-h">
-                        <li><span class="gray" id="s-toggle-disabled-label">[`Disabled`]</span></li>
-                        <li>
-                            <input type="checkbox" id="s-toggle-status" name="enabled" value="1"{if $enabled} checked{/if}>
-                        </li>
-                        <li><span id="s-toggle-enabled-label">[`Enabled`]</span></li>
-                    </ul>
+                <div class="name for-switch">[`Signup bonus`]</div>
+                <div class="value">
+                    <div class="switch-with-text">
+                        <span class="switch js-switch-bonus4reg smaller">
+                            <input type="checkbox" name="enabled" id="s-toggle-bonus4reg-status"{if $enabled} checked{/if} value="1">
+                        </span>
+                        <label for="s-toggle-bonus4reg-status" data-active-text="[`Enabled`]" data-inactive-text="[`Disabled`]">{if $enabled}[`Enabled`]{else}[`Disabled`]{/if}</label>
+                        <div class="spinner custom-mx-12" style="display: none"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -46,28 +44,71 @@
 
     </div>
 </form>
+<script>
+    (function () {
+        const $switch_container = $('#s-toggle-bonus4reg-status').closest('.switch');
+        $switch_container.waSwitch({
+            ready: wa_switch => {
+                wa_switch.$label = wa_switch.$wrapper.siblings('label');
+                wa_switch.active_text = wa_switch.$label.data('active-text');
+                wa_switch.inactive_text = wa_switch.$label.data('inactive-text');
+            },
+            change: (active, wa_switch) => {
+                const $submit = $switch_container.closest('form').find(':submit');
 
-<script type="text/javascript">
-    $('#s-settings-affiliate-bonus4reg-form').submit(function () {
-        var f = $(this);
-        $.post(f.attr('action'), f.serialize(), function (response) {
-            f.find(':submit').after(
-                $('<span class="s-mgs-after-button"><i class="icon16 yes"></i>{_w("Saved")}</span>').animate({ opacity: 0 }, 1500, function() {
-                    $(this).remove();
-                })
-            );
-        }, 'json');
-        return false;
-    });
-
-    var ibutton = $('#s-toggle-status').iButton( { labelOn : "", labelOff : "", className: 'mini' } ).change(function() {
-        var self = $(this);
-        var enabled = self.is(':checked');
-        if (enabled) {
-            self.closest('.field-group').siblings().show(200);
-        } else {
-            self.closest('.field-group').siblings().hide(200);
-        }
-        $.post('?plugin=bonus4reg&module=affiliate&action=enable', { enable: enabled ? '1' : '0' });
-    });
+                wa_switch.$label.text(active ? wa_switch.active_text : wa_switch.inactive_text);
+                wa_switch.disable(true);
+                $switch_container.siblings('.spinner').show();
+                $submit.prop('disabled', true);
+                $.shop.jsonPost(
+                    '{$wa_app_url}?plugin=bonus4reg&module=affiliate&action=enable',
+                    {
+                        enable: active ? 1 : 0,
+                    },
+                    () => {
+                        wa_switch.$label.text(active ? wa_switch.active_text : wa_switch.inactive_text);
+                        if (active) {
+                            $switch_container.closest('.field-group').siblings().show(200);
+                        } else {
+                            $switch_container.closest('.field-group').siblings().hide(200);
+                        }
+                    },
+                    () => {
+                        wa_switch.set(!active);
+                        wa_switch.$label.text(!active ? wa_switch.active_text : wa_switch.inactive_text);
+                    },
+                    () => {
+                        wa_switch.disable(false);
+                        $switch_container.siblings('.spinner').hide();
+                        $submit.prop('disabled', false);
+                    }
+                )
+            }
+        });
+        $('#s-settings-affiliate-bonus4reg-form').submit(function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const $form = $(this),
+                $submit = $form.find(':submit'),
+                $loading = $('<span class="s-msg-after-button custom-mr-4 text-green"><i class="fas fa-check-circle"></i></span><span>' + $_("Saved") + '</span>');
+            $submit.prop('disabled', true).after($loading);
+            $.shop.jsonPost(
+                $form.attr('action'),
+                $form.serialize(),
+                res => {
+                    $submit.after($loading);
+                    $loading.animate(
+                        {
+                            opacity: 0
+                        },
+                        1000,
+                        () => $loading.remove()
+                    );
+                }
+            ).always(()=> {
+                $submit.prop('disabled', false);
+            });
+            return false;
+        });
+    })(jQuery);
 </script>

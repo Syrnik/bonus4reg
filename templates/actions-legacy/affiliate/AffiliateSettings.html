@@ -1,0 +1,73 @@
+<h1>[`Signup Bonus`]</h1>
+
+<p>[`Encourage your customers to register on your site`]</p>
+<p>[`This plugin allows you to accrue a buyer the specified number of points for the registration on your site.`]</p>
+<p>[`<b>Attention!</b> The plugin works only when the "Shop" is selected as an application that is responsible for user registration and authorization! Check the configuration of URLs for user signup, authorization and personal accounts in the settings of the "Site" application.`]</p>
+
+<div style="{if $shop_affiliate_enabled}display:none;{/if}border:1px dashed #c7254e;border-radius:3px;padding:1em;text-align:center;color:#c7254e;background-color: #f9f2f4">
+    [`This is the addition to the <b>main Loyalty Program</b>. Please turn on Loyalty Program before setting up this extension.`]
+</div>       
+
+<form id="s-settings-affiliate-bonus4reg-form"  action="{$wa_app_url}?plugin=bonus4reg&module=affiliate&action=save">
+    <div class="fields form">
+        
+        <div class="field-group"{if !$shop_affiliate_enabled} style="display:none"{/if}>
+            <div class="field">
+                <div class="name">[`Signup bonus`]</div>
+                <div class="value no-shift s-ibutton-checkbox">
+                    <ul class="menu-h">
+                        <li><span class="gray" id="s-toggle-disabled-label">[`Disabled`]</span></li>
+                        <li>
+                            <input type="checkbox" id="s-toggle-status" name="enabled" value="1"{if $enabled} checked{/if}>
+                        </li>
+                        <li><span id="s-toggle-enabled-label">[`Enabled`]</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="field-group" {if !$enabled || !$shop_affiliate_enabled}style="display:none"{/if}>
+            <div class="field">
+                <div class="name">[`Number of points`]</div>
+                <div class="value">
+                    <input type="text" class="short numerical" name="rate" value="{$settings.rate}" placeholder="100">
+                    <p class="hint">[`Number of points that will be credited for signup.`]</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="field-group"{if !$enabled || !$shop_affiliate_enabled} style="display:none"{/if}>
+            <div class="field">
+                <div class="value submit">
+                    <input type="submit" class="button green" value="[`Save`]">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<script>
+    $('#s-settings-affiliate-bonus4reg-form').submit(function () {
+        var f = $(this);
+        $.post(f.attr('action'), f.serialize(), function (response) {
+            f.find(':submit').after(
+                $('<span class="s-mgs-after-button"><i class="icon16 yes"></i>{_w("Saved")}</span>').animate({ opacity: 0 }, 1500, function() {
+                    $(this).remove();
+                })
+            );
+        }, 'json');
+        return false;
+    });
+
+    const ibutton = $('#s-toggle-status').iButton({labelOn: "", labelOff: "", className: 'mini'}).change(function () {
+        const self = $(this);
+        const enabled = self.is(':checked');
+        if (enabled) {
+            self.closest('.field-group').siblings().show(200);
+        } else {
+            self.closest('.field-group').siblings().hide(200);
+        }
+        $.post('{$wa_app_url}?plugin=bonus4reg&module=affiliate&action=enable', {enable: enabled ? '1' : '0'});
+    });
+</script>

@@ -19,7 +19,7 @@ msgid "Signup Bonus plugin is installed."
 msgstr ""
 
 #: /wa-apps/shop/plugins/bonus4reg/templates/actions/settings/Settings.html:6
-msgid "Customize Signup Bonus settings in <a href=\"%s\">Signup Bonus settings</a> screen."
+msgid "Customize Signup Bonus settings in <a href=\"%s\">Signup Bonus</a> screen of Marketing/Affliliate section."
 msgstr ""
 
 #: /wa-apps/shop/plugins/bonus4reg/templates/actions/affiliate/AffiliateSettings.html:1

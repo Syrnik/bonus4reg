@@ -4,13 +4,20 @@
  *
  * @package Bonus4reg/controller
  * @author Serge Rodovnichenko <serge@syrnik.com>
- * @version 1.0.0
- * @copyright (c) 2014, Serge Rodovnichenko
+ * @copyright (c) 2014-2025, Serge Rodovnichenko
  * @license http://www.webasyst.com/terms/#eula Webasyst
  */
+
+declare(strict_types=1);
+
 class shopBonus4regPluginAffiliateEnableController extends waJsonController
 {
-    public function execute()
+    /**
+     * @return void
+     * @throws waException
+     * @throws waRightsException
+     */
+    public function execute(): void
     {
         if (!$this->getUser()->getRights('shop', 'settings')) {
             throw new waRightsException(_w('Access denied'));
