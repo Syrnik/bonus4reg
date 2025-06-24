@@ -60,7 +60,9 @@
         return false;
     });
 
-    const ibutton = $('#s-toggle-status').iButton({labelOn: "", labelOff: "", className: 'mini'}).change(function () {
+    const ibutton = $('#s-toggle-status').iButton({
+        labelOn: "", labelOff: "", className: 'mini'
+    }).change(function () {
         const self = $(this);
         const enabled = self.is(':checked');
         if (enabled) {
@@ -68,6 +70,11 @@
         } else {
             self.closest('.field-group').siblings().hide(200);
         }
-        $.post('{$wa_app_url}?plugin=bonus4reg&module=affiliate&action=enable', {enable: enabled ? '1' : '0'});
+        $.post(
+            '{$wa_app_url}?plugin=bonus4reg&module=affiliate&action=enable',
+            {
+                enable: enabled ? '1' : '0'
+            }
+        );
     });
 </script>
